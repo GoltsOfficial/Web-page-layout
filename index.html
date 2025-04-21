@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Frontend-разработчик Дмитрий Алексеев</title>
+
+    <!-- Подключаем шрифт Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(241, 241, 241);
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            height: 100px;
+            padding: 0 40px;
+        }
+
+        header > div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header a:last-child {
+            margin-right: 0;
+        }
+
+        .fixed-container {
+            max-width: 1000px;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section {
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .first-block {
+            height: 500px;
+        }
+
+        .first-block > .fixed-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 40px;
+        }
+
+        .text-side {
+            flex: 1;
+        }
+
+        .image-side img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .services > div {
+            flex: 1 1 calc(25% - 20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .services img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .examples > div {
+            flex: 1 1 calc(33.33% - 20px);
+            display: flex;
+            justify-content: center;
+        }
+
+        .examples img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .price-info {
+            background-color: blue;
+            color: white;
+        }
+
+        .price-info h1 {
+            width: 50%;
+        }
+
+        .price-info p {
+            width: 50%;
+            margin-top: 10px;
+        }
+
+        .light-button {
+            border: 1px solid black;
+            background-color: transparent;
+        }
+
+        .dark-button {
+            border: 1px solid;
+            background-color: blue;
+            color: white;
+        }
+
+        button {
+            padding: 10px 30px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        footer {
+            padding: 40px;
+            background-color: #eee;
+        }
+
+        footer .footer-wrapper {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        footer .menu,
+        footer .contacts,
+        footer .socials {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        footer .menu a,
+        footer .contacts span {
+            margin-bottom: 10px;
+        }
+
+        footer .socials .icons {
+            display: flex;
+            flex-direction: row; /* Иконки в строку */
+            gap: 10px; /* Увеличено расстояние между иконками */
+            margin-bottom: 10px;
+        }
+
+        footer .socials button {
+            margin-bottom: 20px;
+        }
+
+        .popup-container {
+            background-color: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            left: 0;
+        }
+
+        .popup {
+            background-color: white;
+            width: 300px;
+            padding: 20px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .popup input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .services > div {
+                flex: 1 1 calc(50% - 20px);
+            }
+
+            .examples > div {
+                flex: 1 1 calc(20% - 20px);
+            }
+
+            .price-info h1,
+            .price-info p {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services > div,
+            .examples > div {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            var container = document.querySelector('.popup-container');
+            var popupButtons = document.querySelectorAll('.open-popup');
+            for (let i = 0; i < popupButtons.length; i++) {
+                popupButtons[i].addEventListener('click', function(){
+                    container.style.display = 'flex';
+                });
+            }
+
+            container.addEventListener('click', function(event){
+                if(event.target == container) {
+                    container.style.display = 'none';
+                }
+            });
+
+            const sendBtn = document.getElementById('send-button');
+            if (sendBtn) {
+                sendBtn.addEventListener('click', () => {
+                    container.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="popup-container">
+        <form class="popup">
+            <input type="text" placeholder="Введите ваше имя">
+            <input type="email" placeholder="Введите ваш email">
+            <button type="button" id="send-button" class="dark-button">Отправить</button>
+        </form>
+    </div>
+
+    <header>
+        <div class="fixed-container">
+            <div>
+                <a href="#">Услуги</a>
+                <a href="#">Профиль</a>
+                <a href="#">Стоимость</a>
+            </div>
+            <div>
+                <span>+7(999)-111-11-11</span>
+                <button class="light-button open-popup">Заказать звонок</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="first-block">
+        <div class="fixed-container">
+            <div class="hero-content">
+                <div class="text-side">
+                    <h1>Дмитрий Алексеев</h1>
+                    <p>Frontend-разработчик</p>
+                    <button class="dark-button open-popup">Узнать больше</button>
+                </div>
+                <div class="image-side">
+                    <img src="photo/hero.jpg" alt="Фото Дмитрия">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="fixed-container">
+            <h2>Что я делаю</h2>
+            <div class="services">
+                <div><img src="photo/4.jpg" alt="">UI/UX дизайн</div>
+                <div><img src="photo/4.jpg" alt="">Вёрстка сайтов</div>
+                <div><img src="photo/4.jpg" alt="">Адаптивность</div>
+                <div><img src="photo/4.jpg" alt="">Оптимизация</div>
+            </div>
+            <button class="light-button open-popup">Узнать стоимость</button>
+        </div>
+    </section>
+
+    <section>
+        <div class="fixed-container">
+            <h2>Примеры работ</h2>
+            <div class="examples">
+                <div><img src="photo/5.jpg" alt="Пример 1"></div>
+                <div><img src="photo/6.jpg" alt="Пример 2"></div>
+                <div><img src="photo/7.jpg" alt="Пример 3"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="price-info">
+        <div class="fixed-container">
+            <h1>Адаптивная вёрстка</h1>
+            <p>Я создаю сайты, которые отлично выглядят на любых устройствах: от телефонов до телевизоров.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="fixed-container footer-wrapper">
+            <div class="menu">
+                <a href="#">Услуги</a>
+                <a href="#">Профиль</a>
+                <a href="#">Стоимость</a>
+            </div>
+
+            <div class="contacts">
+                <span>+7(999)-111-11-11</span>
+                <span>example@mail.com</span>
+            </div>
+
+            <div class="socials">
+                <button class="dark-button open-popup">Заказать звонок</button>
+                <div class="icons">
+                    <a href="https://facebook.com" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/facebook.svg" alt="Facebook" width="24">
+                    </a>
+                    <a href="https://vk.com" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/vk.svg" alt="VK" width="24">
+                    </a>
+                    <a href="https://youtube.com" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/youtube.svg" alt="YouTube" width="24">
+                    </a>
+                    <a href="https://t.me" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/telegram.svg" alt="Telegram" width="24">
+                    </a>
+                    <a href="https://instagram.com" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" alt="Instagram" width="24">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
